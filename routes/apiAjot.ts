@@ -8,7 +8,6 @@ const apiAjotRouter: Router = express.Router();
 apiAjotRouter.use(express.json());
 
 
-// GET: Haetaan kaikki ajot
 apiAjotRouter.get("/", async (req: Request, res: Response) => {
 
     res.json(await prisma.ajo.findMany());
@@ -16,7 +15,6 @@ apiAjotRouter.get("/", async (req: Request, res: Response) => {
 });
 
 
-// GET: Haetaan yksittäinen ajo id:n perusteella
 apiAjotRouter.get("/:id", async (req: Request, res: Response) => {
 
     const valinta = await prisma.ajo.count({
@@ -36,7 +34,6 @@ apiAjotRouter.get("/:id", async (req: Request, res: Response) => {
 });
 
 
-// POST: Lisätään uusi ajo
 apiAjotRouter.post("/", async (req: Request, res: Response) => {
 
     console.log("POST BODY:", req.body);
@@ -67,7 +64,6 @@ apiAjotRouter.post("/", async (req: Request, res: Response) => {
 });
 
 
-// PUT: Muokataan olemassa olevaa ajoa
 apiAjotRouter.put("/:id", async (req: Request, res: Response) => {
 
     const valinta = await prisma.ajo.count({
@@ -106,8 +102,6 @@ apiAjotRouter.put("/:id", async (req: Request, res: Response) => {
 
 });
 
-
-// DELETE: Poistetaan ajo id:n perusteella
 apiAjotRouter.delete("/:id", async (req: Request, res: Response) => {
 
     const valinta = await prisma.ajo.count({
